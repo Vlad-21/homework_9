@@ -54,7 +54,7 @@ const LoginPage: React.FC<IProps> = ({isLogin, changeLogin}) => {
             <div className="p-login-container">
                 <h1>Login</h1>
                 <form className="p-login-form" onSubmit={handleSubmitClick}>
-                    <label>Your Name:</label>
+                    <label>Login:</label>
                     <input
                         style={{borderColor: errors.name ? "red" : "black"}}
                         type="text"
@@ -64,7 +64,7 @@ const LoginPage: React.FC<IProps> = ({isLogin, changeLogin}) => {
                         className="p-login-input"
                     />
                     {errors.name && <div className="p-login-error-message">{errors.name}</div>}
-                    <label>Your Password:</label>
+                    <label>Password:</label>
                     <input
                         style={{borderColor: errors.name ? "red" : "black"}}
                         type="password"
@@ -77,6 +77,7 @@ const LoginPage: React.FC<IProps> = ({isLogin, changeLogin}) => {
                     <input
                         type="submit"
                         className="p-login-submit"
+                        value="Увійти"
                     />
                 </form>
             </div>
