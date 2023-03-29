@@ -1,25 +1,30 @@
-import React from "react";
-import {Link} from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import './PostsListPage.css';
+import {getPosts} from "../../http/httpPost";
+import {IPost} from "../../interfaces/postInterface";
+import PostElement from "../../components/PostElement/PostElement";
+import Loader from "../../components/Loader/Loader";
 
-const PostListPage: React.FC = () => {
-    const posts = [
-        { id: 1, title: "Post 1" },
-        { id: 2, title: "Post 2" },
-        { id: 3, title: "Post 3" },
-    ];
-
+const PostsListPage: React.FC = () => {
+    const [posts, setPosts] = useState<Array<IPost>>([]);
+    const [showLoader, setShowLoader] = useState<boolean>(false);
+    useEffect(() => {
+        setShowLoader(true);
+        getPosts().then((data) => {
+            setPosts(data);
+            setShowLoader(false);
+        }).catch((e) => {
+            console.log(e)
+        })
+    }, [])
     return (
-        <div>
-            <h1>Post List</h1>
-            <ul>
-                {posts.map((post) => (
-                    <li key={post.id}>
-                        <Link to={`/posts/${post.id}`}>{post.title}</Link>å
-                    </li>
-                ))}
-            </ul>
+        <div className="p-post-list-container">
+            {posts.map((item) => (
+                <PostElement key={item.id} id={item.id} post={item}/>
+            ))}
+            {showLoader && <Loader />}
         </div>
     );
 }
 
-export default PostListPage;
+export default PostsListPage;

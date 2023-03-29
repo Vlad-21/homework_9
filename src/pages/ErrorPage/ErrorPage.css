@@ -1,0 +1,35 @@
+.p-error-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.p-error-404 {
+    font-size: 80px;
+    font-weight: 900;
+    color: #af4261;
+    margin: 0 0 20px;
+}
+
+.p-error-title {
+    margin: 10px 0 0;
+    font-size: 30px;
+    font-weight: 700;
+
+}
+
+.p-error-link {
+    margin: 20px 0 0;
+    text-decoration: none;
+    color: black;
+    font-size: 24px;
+}
+
+.p-error-link:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+    color: cornflowerblue;
+}
